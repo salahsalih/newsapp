@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Image, Text, StyleSheet } from "react-native";
+import { View, Image, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 export default class Header extends Component {
   render() {
@@ -11,6 +11,9 @@ export default class Header extends Component {
           source={require("../assets/logo.png")}
         />
         <Text style={styles.title}>News Application</Text>
+        <TouchableOpacity onPress={() => this.props.openDrawer()}>
+          <Text>Open Drawer</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -21,7 +24,8 @@ const styles = StyleSheet.create({
     height: 60,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "red"
+    backgroundColor: "#bbbbbb",
+    justifyContent: "space-between"
   },
   image: { height: 40, width: 95 },
   title: { marginLeft: 20 }

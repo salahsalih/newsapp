@@ -11,8 +11,9 @@ export default class NewsList extends Component {
     return (
       // <ScrollView style={{ flex: 1, backgroundColor: "yellow" }}>{newsList}</ScrollView>
       <FlatList
+        style={{ flex: 1 }}
         data={news}
-        renderItem={(props) => <NewsItem item={props.item} />}
+        renderItem={props => <NewsItem item={props.item} />}
       />
     );
   }

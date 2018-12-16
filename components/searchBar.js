@@ -17,7 +17,7 @@ export default class SearchBar extends Component {
     return (
       <View
         style={{
-          flex: 0.15,
+          flex: 0.1,
           marginHorizontal: 10,
           justifyContent: "center"
         }}

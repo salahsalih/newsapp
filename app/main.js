@@ -33,10 +33,12 @@ export default class Main extends Component {
     this.setState(data);
   }
 
-  closeControlPanel = () => {
+  closeDrawer = () => {
     this._drawer.close();
   };
-  openControlPanel = () => {
+
+  /* this declaration not need to "bind(this)" */
+  openDrawer = () => {
     this._drawer.open();
   };
 
@@ -45,20 +47,31 @@ export default class Main extends Component {
       <Drawer
         type="overlay"
         side="right"
-        open={true}
         openDrawerOffset={100}
         ref={ref => (this._drawer = ref)}
         content={
-          <View style={{ backgroundColor: "red", flex: 1 }}>
-            <Text>Hello from the other side of knowledge</Text>
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: "#aaaaaa",
+              justifyContent: "center"
+            }}
+          >
+            <Text style={{ textAlign: "center" }}>
+              Hello from the other side of knowledge
+            </Text>
           </View>
         }
       >
         <View style={{ flex: 1, marginTop: Constants.statusBarHeight }}>
-          <Header />
+          {/* Here not Need To use "bind(this)" */}
+          <Header openDrawer={this.openDrawer} />
+          {/*
+          Moved to header Component 
           <TouchableOpacity onPress={() => this.openControlPanel()}>
             <Text>Open Drawer</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> 
+          */}
           <SearchBar searchFun={this.search.bind(this)} />
           <NewsList news={this.state.news} />
         </View>
